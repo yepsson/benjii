@@ -21,7 +21,6 @@ const CartComponent = {
     // ladda in litta data
     this.loading = true;
     http.get('/rest/cart').then(response => {
-      console.log('items', response.data.items)
       this.items = response.data.items;
       this.loading = false;
     }).catch(e => {

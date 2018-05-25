@@ -30,7 +30,6 @@ const RegistrationComponent = {
         email: this.email,
         password: this.password,
       }).then(response => {
-        console.log(response);
         this.loading = false;
         if(response.data.msg) {
           this.message = 'Registration complete';

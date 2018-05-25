@@ -43,7 +43,6 @@ const LoginComponent = {
         email: this.email,
         password: this.password,
       }).then(response => {
-        console.log('/rest/login', response);
         this.loading = false;
         if(response.data.email) {
           this.message = 'Logged in';
@@ -60,7 +59,6 @@ const LoginComponent = {
     logout() {
       this.loading = true;
       http.post('/rest/logout').then(response => {
-        console.log(response);
         this.loading = false;
         this.message = response.data.message;
         this.user = {};

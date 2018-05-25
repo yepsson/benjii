@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
-const stripe = require('stripe')('sk_test_');
+const stripe = require('stripe')('sk_test_J3UpoYjHJHtMZtZ8zjsdv6vO');
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -53,21 +53,37 @@ app.use(CartMiddleware);
 // Products CRUD paths
 
 app.post('/rest/pay', async(req, res)=>{
-  
-  let customer = await stripe.customers.create(
-    { email: 'customer@example.com' }
-  );
+ const  userEmail = req.session.user.email;
+ let paymentSum = 0;
 
-  let source = stripe.customers.createSource(customer.id, {
-    source: 'tok_visa'
-  });
+ const cart = await Cart.findOne({ _id: req.session.cart }).populate('items.product');
 
-  let charge = await stripe.charges.create({
-    amount: 1600,
-    currency: 'usd',
-    customer: source.customer
-  });
+ for(let item of cart.items){
+   const price = item.product.price * item.amount;
+   paymentSum += price;
+ }
 
+ const customer = await stripe.customers.create(
+   { "email": userEmail }
+ ).catch(e=>console.error);
+
+ const source = await stripe.customers.createSource(customer.id, {
+   source: 'tok_visa'
+ }).catch(e=>console.error);
+
+ const charge = await stripe.charges.create({
+   amount: paymentSum,
+   currency: 'sek',
+   customer: source.customer
+ }).catch(e=>console.error);
+
+ res.json(charge);
+});
+
+app.get('/rest/products', async(req, res)=>{
+ //res.send('We are products');
+ let products = await Product.find(); // {name:"The Times"}
+ res.json(products);
 });
 
 app.get('/rest/products', async(req, res)=>{
@@ -119,7 +135,7 @@ app.delete('/rest/products/:id', async (req, res)=>{
 app.post('/rest/cart', async(req, res)=>{
   // add a product to the cart (note that the CartMiddleware must already have run)
   let cart = await Cart.findOne({_id: req.session.cart});
-  console.log('cart', cart);
+  
   if(cart === null){ // This is a real bug. Haven't figured it out yet.
     console.error('Unhandled error. We should have a cart, but we only have the ID. Well just make a new one (with the id) then...', req.session.cart);
     cart = new Cart({_id: req.session.cart});

@@ -4,7 +4,7 @@ const CartPageComponent = {
     <div class="row">
       <cart class="col-12"></cart>
       <div class="col-12">
-        <lable for="first-name">Förnamn:</lable>
+        <label for="first-name">Förnamn:</label>
         <input name="first-name" v-model="firstName"></input>
         <button v-on:click="pay">Betala</button>
       </div>
@@ -19,7 +19,11 @@ const CartPageComponent = {
 
   methods: {
     pay: ()=>{
-      console.log('pay');
+      http.post('/rest/pay', {}).then(response => {
+        console.log(response);
+      }).catch(error => {
+        console.log(error)
+      });
     }
   }
 }
