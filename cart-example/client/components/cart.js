@@ -4,10 +4,10 @@ const CartComponent = {
       <h1>{{title}}</h1>
       <table>
         <tr>
-          <th>vara</th>
-          <th>pris</th>
-          <th>moms</th>
-          <th>antal</th>
+          <th>Vara</th>
+          <th>Pris</th>
+          <th>Moms</th>
+          <th>Antal</th>
         </tr>
         <cart-item v-if="!loading"
           v-for="item in items"

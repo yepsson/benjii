@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
+const stripe = require('stripe')('sk_test_');
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -50,6 +51,24 @@ app.use(CartMiddleware);
 // REST routes (backend routes)
 
 // Products CRUD paths
+
+app.post('/rest/pay', async(req, res)=>{
+  
+  let customer = await stripe.customers.create(
+    { email: 'customer@example.com' }
+  );
+
+  let source = stripe.customers.createSource(customer.id, {
+    source: 'tok_visa'
+  });
+
+  let charge = await stripe.charges.create({
+    amount: 1600,
+    currency: 'usd',
+    customer: source.customer
+  });
+
+});
 
 app.get('/rest/products', async(req, res)=>{
   //res.send('We are products');
@@ -178,7 +197,7 @@ app.get('/rest/user', (req, res)=>{
   if(req.user._id){
     response = req.user;
     // never send the password back
-    response.password = '******';
+    //response.password = '******';
   }else{
     response = {message: 'Not logged in'};
   }
