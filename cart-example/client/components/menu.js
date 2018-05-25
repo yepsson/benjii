@@ -8,6 +8,12 @@ const MenuComponent = {
       <li class="nav-item">
         <router-link class="nav-link" to="/products">Produkter</router-link>
       </li>
+      <li class="nav-item">
+        <router-link class="nav-link" to="/Login">Loggain/registrera</router-link>
+      </li>
+      <li class="nav-item">
+        <router-link class="nav-link" to="/Cart">Kundvagn</router-link>
+      </li>
     </ul>
   `
 }

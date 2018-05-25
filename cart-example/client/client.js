@@ -9,6 +9,7 @@ Vue.component('cart-item', CartItemComponent);
 Vue.component('cart', CartComponent);
 Vue.component('login', LoginComponent);
 Vue.component('registration', RegistrationComponent);
+Vue.component('nav-menu', MenuComponent);
 
 const http = axios; // using axios 3rd party XHR/REST lib
 

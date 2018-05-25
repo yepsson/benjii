@@ -7,7 +7,7 @@ const LoginPageComponent = {
         </div>
 
         <div class="row">
-        <registration class="col-12"></registration>
+            <registration class="col-12"></registration>
         </div>
     </div>
   `
