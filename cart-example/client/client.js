@@ -7,6 +7,8 @@ Vue.component('registration', RegistrationComponent);
 Vue.component('login', LoginComponent);
 Vue.component('cart-item', CartItemComponent);
 Vue.component('cart', CartComponent);
+Vue.component('login', LoginComponent);
+Vue.component('registration', RegistrationComponent);
 
 const http = axios; // using axios 3rd party XHR/REST lib
 
@@ -17,7 +19,8 @@ const router = new VueRouter({
   routes: [ // our frontend routes
     { path: '/', component: HomePageComponent },
     { path: '/products', component: ProductPageComponent },
-    { path: '/cart', component: CartPageComponent }
+    { path: '/cart', component: CartPageComponent },
+    { path: '/login', component: LoginPageComponent }
   ]
 });
 
