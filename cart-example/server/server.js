@@ -13,6 +13,10 @@ app.use(bodyParser.json());
 // serve frontend files (all existing files in the client folder will respond)
 app.use(express.static( '../client/'));
 
+app.get(/^((?!rest).)*$/, async(req, res)=>{
+  res.sendFile(path.normalize(__dirname + '/../client/index.html'));
+});
+
 // the cart is dependent on sessions, so...
 const AccessManager = require('access-manager');
 const accessManager = new AccessManager({
@@ -128,6 +132,7 @@ app.get('/rest/cart', async(req, res)=>{
   res.json(cart);
 });
 
+
 // User access paths:
 
 app.post('/rest/register', async (req, res)=>{
@@ -189,6 +194,8 @@ app.get('/rest/admin', async(req, res)=>{
 app.get('/rest/super', async(req, res)=>{
   res.send('Only super role may access here');
 });
+
+
 
 // start the express HTTP server
 app.listen('3000', ()=>{
