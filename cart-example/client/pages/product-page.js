@@ -9,7 +9,6 @@ const ProductPageComponent = {
     `,
     created(){
       http.get('/rest/products').then((data)=>{
-        
       }).catch((error) =>{
         console.error(error);
       });
