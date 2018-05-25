@@ -1,4 +1,4 @@
-const ProductPageComponent = {
+const CartPageComponent = {
 
     template: `
       <div class="row">
