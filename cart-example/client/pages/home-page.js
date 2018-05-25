@@ -2,8 +2,12 @@ const HomePageComponent = {
 
     template: `
       <div class="row">
-        <h1>Sehr Willkommen </h1>
+        
         <hello class="col-12"></hello>
+        <h1 class="col-12">Bästsäljare</h1>
+        <product-page v-bind:slice="3" ></product-page>
       </div>
     `
+    
   }
+

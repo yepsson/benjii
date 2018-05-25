@@ -1,7 +1,10 @@
 const ProductPageComponent = {
 
+    props:["slice"],
+
     template: `
       <div class="row">
+      <h1 v-if="!slice" class="col-12">Produktsida</h1>
         <product
           v-for="product in products"
           v-bind:item="product"
@@ -11,7 +14,15 @@ const ProductPageComponent = {
     `,
     created(){
       http.get('/rest/products').then((response)=>{
-        this.products = response.data;
+        if(this.slice){
+          this.products = response.data.slice(0, Number(this.slice));
+
+        }
+        else{ 
+          this.products = response.data;
+        }
+
+       
       }).catch((error) =>{
         console.error(error);
       });
