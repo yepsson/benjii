@@ -9,7 +9,7 @@ const MenuComponent = {
         <router-link class="nav-link" to="/products">Produkter</router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link" to="/Login">Loggain/registrera</router-link>
+        <router-link class="nav-link" to="/Login">Logga in/registrera</router-link>
       </li>
       <li class="nav-item">
         <router-link class="nav-link" to="/Cart">Kundvagn</router-link>
