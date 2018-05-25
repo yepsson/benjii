@@ -15,7 +15,7 @@ const ProductPageComponent = {
     created(){
       http.get('/rest/products').then((response)=>{
         if(this.slice){
-          this.products = response.data.slice(0, Number(this.slice));
+          this.products = response.data.slice(- Number(this.slice));
 
         }
         else{ 
