@@ -1,4 +1,5 @@
 const CartPageComponent = {
+
   template: `
     <div class="row">
       <cart class="col-12"></cart>
@@ -9,15 +10,14 @@ const CartPageComponent = {
           <input name="first-name" v-model="firstName"></input>
         </div>
         <button v-on:click="pay">Betala</button>
-        <button v-on:click="emptyCart">Rensa kundvagn</button>
       </div>
     </div>
   `,
-
-  data() {
-    return {
-      firstName: ""
-    };
+  
+  data(){
+    return{
+      firstName: ''
+    }
   },
 
   methods: {
@@ -37,4 +37,4 @@ const CartPageComponent = {
 
     }
   }
-};
+}
