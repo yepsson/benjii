@@ -1,4 +1,4 @@
-const InfoPageComponent = {
+const AdminPageComponent = {
 
     template: `
     <div class="row">

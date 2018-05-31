@@ -15,7 +15,7 @@ const MenuComponent = {
         <router-link class="nav-link" to="/Cart">Kundvagn</router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link" to="/info">Info</router-link>
+        <router-link class="nav-link" to="/admin">Admin</router-link>
       </li>
     </ul>
   `

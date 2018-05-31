@@ -1,7 +1,7 @@
 Vue.component('home-page', HomePageComponent);
 Vue.component('product-page', ProductPageComponent);
 Vue.component('cart-page', CartPageComponent);
-Vue.component('info-page', InfoPageComponent);
+Vue.component('admin-page', AdminPageComponent);
 Vue.component('product', ProductComponent);
 Vue.component('hello', HelloComponent);
 Vue.component('registration', RegistrationComponent);
@@ -23,7 +23,7 @@ const router = new VueRouter({
     { path: '/products', component: ProductPageComponent },
     { path: '/cart', component: CartPageComponent },
     { path: '/login', component: LoginPageComponent },
-    { path: '/info', component: InfoPageComponent }
+    { path: '/admin', component: AdminPageComponent }
   ]
 });
 
