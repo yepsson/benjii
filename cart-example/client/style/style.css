@@ -11,6 +11,14 @@ body{
 .cart-item-amount input{
   max-width: 40px;
 }
+
+.inputCart > input{
+  display: flex;
+  align-items: center;
+  margin-bottom:3vh;
+}
+
+
 .darker{
   background:rgba(0,0,0,0.5);
   padding:10px;

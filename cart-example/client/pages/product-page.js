@@ -3,7 +3,10 @@ const ProductPageComponent = {
 
   template: `
       <div class="row">
-      <input type="text" v-model="search" placeholder="search products"/>
+      <div v-if="!slice">
+        <input type="text" v-model="search" placeholder="search products"/>
+      </div>
+
       <h1 v-if="!slice" class="col-12">Produktsida</h1>
         <product
           v-for="product in filteredProducts"

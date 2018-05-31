@@ -5,7 +5,7 @@ const ProductComponent = {
   template: `
     <div class="card-body">
       <h2>{{item.name}}</h2>
-      <img src="images/paper.png">
+      <img v-bind:src="item.image"/>
       <div>{{item.price}}kr</div>
       <p v-html="item.description"></p>
       <button v-on:click="addToCart">Lägg till</button>

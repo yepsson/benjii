@@ -3,5 +3,6 @@ module.exports = mongoose.model('Product', new mongoose.Schema({
   description: String,
   price: Number,
   vat: Number,
+  image: String,
   artnr: {type: String, unique: true}
 }));
